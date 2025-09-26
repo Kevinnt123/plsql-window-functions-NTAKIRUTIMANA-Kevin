@@ -46,9 +46,9 @@ select customer_id, sum(amount) as total_spent, NTILE(4) over (order by sum(amou
 
 
 **result analysis** 
-1. Descriptive: top product differ by region
-2. Diagnostic: Seasonality drives
-3. prescriptive: focus marketing on quartile customers.
+1. Descriptive: top product dominates in each region. overall sales increased
+2. Diagnostic: Strong sales come from high demand and large regional market.
+3. prescriptive: the company should stock and promote top products more in high-demand regions. 
 
 **references**
 
