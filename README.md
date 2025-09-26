@@ -8,18 +8,23 @@ Data challenge: problem in managing data and how to segment customers for market
 Expected outcome: finding out customers buying behavior, sales trend and segmentation to support marketing.
 
 step 2:  Success criteria
+
 1.	Top 5 products per region/ quarter: RANK ()
 
 Expected output: each region should list its top 5 products ranked by sales value.
+
 2.	Running monthly sales totals: SUM () OVER ()
 
 Expected output: sales totals that keep increasing from month to month.
+
 3.	Month-over-month growth: LAG () / LEAD ()
 
 Expected output: a positive or negative growth rate for each month after the first.
+
 4.	Customer quartiles: NTILE (4)
 
 Expected output: division of customers into 4 equal groups, ordered by total spending.
+
 5.	3-month moving average: AVG () OVER ()
 
 Expected output: a smoothed sales trend where each month’s value is averaged with the two months before it. 
@@ -52,5 +57,7 @@ step 6: Result analysis
 3. prescriptive: focus marketing on quartile customers.
 
 step 7: References
+
 https://www.youtube.com/watch?v=Ww71knvhQ-s&t=196s :RANK, DENSE RANK, LEAD/ LAG
+
 https://www.youtube.com/watch?v=g0J7L-HfQAU : NTILE
