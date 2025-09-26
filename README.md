@@ -1,38 +1,32 @@
 # plsql-window-functions-NTAKIRUTIMANA-Kevin
-step1: 
+**problem definition:**
 
-Business context: A retail company operating in Rwanda with branches Kigali, Muhanga, Nyanza wants to analyze its sale performance.
+In the retail company working in three districts (Kigali,Muhanga, Nyanza) there is a problem in managing data and how to segment customers for marketing.
 
-Data challenge: problem in managing data and how to segment customers for marketing.
+**success criteria**
 
-Expected outcome: finding out customers buying behavior, sales trend and segmentation to support marketing.
+  1.	Top 5 products per region/ quarter: RANK ()
 
-step 2:  Success criteria
+  2.	Running monthly sales totals: SUM () OVER ()
 
-1.	Top 5 products per region/ quarter: RANK ()
+  3.	Month-over-month growth: LAG () / LEAD ()
 
-Expected output: each region should list its top 5 products ranked by sales value.
+  4.	Customer quartiles: NTILE (4)
 
-2.	Running monthly sales totals: SUM () OVER ()
+  5.	3-month moving average: AVG () OVER () 
 
-Expected output: sales totals that keep increasing from month to month.
+**database schema**
 
-3.	Month-over-month growth: LAG () / LEAD ()
-
-Expected output: a positive or negative growth rate for each month after the first.
-
-4.	Customer quartiles: NTILE (4)
-
-Expected output: division of customers into 4 equal groups, ordered by total spending.
-
-5.	3-month moving average: AVG () OVER ()
-
-Expected output: a smoothed sales trend where each month’s value is averaged with the two months before it. 
-
-step 3: included in the document
+  1. customers(customer_id, name, region)
+ 
+  2. transactions(product_id, name, category)
+  
+  3. transactions(transaction_id, customer_id,product_id, sale_date, amount)
+  
+  4. ER Diagram(it is included in the document above)
 
 
-step 4: window functions implementation
+**queries and outputs**
 
 1.ranking: RANK()
 
@@ -51,13 +45,13 @@ select transaction_id, sale_date, amount, lag(amount) over (order by sale_date)a
 select customer_id, sum(amount) as total_spent, NTILE(4) over (order by sum(amount) desc)as quartile from transactions;
 
 
-step 6: Result analysis 
+**result analysis** 
 1. Descriptive: top product differ by region
 2. Diagnostic: Seasonality drives
 3. prescriptive: focus marketing on quartile customers.
 
-step 7: References
+**references**
 
-https://www.youtube.com/watch?v=Ww71knvhQ-s&t=196s :RANK, DENSE RANK, LEAD/ LAG
+1. https://www.youtube.com/watch?v=Ww71knvhQ-s&t=196s
 
-https://www.youtube.com/watch?v=g0J7L-HfQAU : NTILE
+2. https://www.youtube.com/watch?v=g0J7L-HfQAU 
