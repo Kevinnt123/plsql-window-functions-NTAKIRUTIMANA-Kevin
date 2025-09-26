@@ -19,12 +19,16 @@ step 3: included in the document
 
 
 step 4: window functions implementation
+
 1.ranking: RANK()
 select c.region, p.product_id, p.name as product_name, sum(t.amount) as total_sales, rank() over(partition by c.region order by sum(t.amount) desc) as ranking from transactions t join customers c on t.customer_id= c.customer_id join products p on p.product_id= t.product_id;
+
 2. aggregate: SUM() OVER()
 select sale_date, sum(amount) over (order by sale_date) as running_total from transactions;
+
 3. navigation: LAG()
 select transaction_id, sale_date, amount, lag(amount) over (order by sale_date)as prev_amount from transactions;
+
 4. distribution: NTILE()
 select customer_id, sum(amount) as total_spent, NTILE(4) over (order by sum(amount) desc)as quartile from transactions;
 
